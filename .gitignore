@@ -1,0 +1,12 @@
+*.local
+*.res
+*.identcache
+*.stat
+*.*dsk
+Win32/
+*.dcu
+*.exe
+__history/
+__recovery/
+*.tvsconfig
+

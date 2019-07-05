@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{FE2D96DA-3048-4873-9B7E-825FE88F7CB3}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Server\SoapServer.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Client\SoapClient.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Client2\SoapClient2.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="SoapServer">
+        <MSBuild Projects="Server\SoapServer.dproj"/>
+    </Target>
+    <Target Name="SoapServer:Clean">
+        <MSBuild Projects="Server\SoapServer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SoapServer:Make">
+        <MSBuild Projects="Server\SoapServer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SoapClient">
+        <MSBuild Projects="Client\SoapClient.dproj"/>
+    </Target>
+    <Target Name="SoapClient:Clean">
+        <MSBuild Projects="Client\SoapClient.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SoapClient:Make">
+        <MSBuild Projects="Client\SoapClient.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SoapClient2">
+        <MSBuild Projects="Client2\SoapClient2.dproj"/>
+    </Target>
+    <Target Name="SoapClient2:Clean">
+        <MSBuild Projects="Client2\SoapClient2.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SoapClient2:Make">
+        <MSBuild Projects="Client2\SoapClient2.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="SoapServer;SoapClient;SoapClient2"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="SoapServer:Clean;SoapClient:Clean;SoapClient2:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="SoapServer:Make;SoapClient:Make;SoapClient2:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
